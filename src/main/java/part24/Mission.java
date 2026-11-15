@@ -11,5 +11,25 @@ import mbot.*;
 
 @MBotLab(world = "wall-ahead")
 public class Mission {
+    public static void mission(MBot2 bot) {
+        System.out.println("Mission start: " + bot);
+        bot.run();
+        System.out.println("Mission done: " + bot);
+    }
 
+    public static void main(String[] args) {
+        int pick = 3;
+        MBot2 bot;
+
+        if (pick == 1) {
+            bot = new CarefulBot();
+        } else if (pick == 2) {
+            bot = new FlashyBot();
+        } else {
+            bot = new MBot2();
+        }
+
+        mission(bot);
+    }
 }
+

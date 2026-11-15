@@ -11,5 +11,28 @@ import mbot.*;
 
 @MBotLab(world = "open-room")
 public class Stretch {
+    public static void main(String[] args) {
 
-}
+        MBot2 a = new FlashyBot();
+        Chassis c = a;
+
+        a.straight(10);
+        c.turnLeft(90);
+        /* MY GUESS
+        The line will be print true
+         */
+
+        /* MY GUESS
+        c.turnLeft(90) will use FlashyBot's turnLeft().
+          a.straight(10) will use FlashyBot's straight()
+          if FlashyBot overrides it; otherwise it uses
+          the inherited implementation.
+         */
+        System.out.println(a == c);
+
+        System.out.println(a);
+    }
+
+}// With pick = 3 , the first line will be printed out a mbot 2 object.
+// cause it does not use the toString overrides from
+// * CarefulBot or FlashyBot.
