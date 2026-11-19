@@ -14,32 +14,43 @@ import mbot.*;
 //    saying in YOUR OWN WORDS what that line does.
 
 public class CarefulBot extends MBot2 {
-    private int refused;
+    // Create a constructor for CarefulBot.
     public CarefulBot() {
+
+        // Call the constructor of the parent class.
         super();
     }
 
+    // Override the straight method from MBot2.
     @Override
     public void straight(double cm) {
+
+        // Check if there is enough space to move safely.
         if (readUltrasonic() > cm + 20) {
+
+            // Call the original straight method from MBot2.
             super.straight(cm);
+
+            // Run this if an obstacle is too close.
         } else {
-            refused++;
+
+            // Turn on LED 1 with a red color.
             turnLedOn(1, 255, 0, 0);
+
+            // Print a message explaining why the robot cannot move.
             System.out.println("CarefulBot: not driving " + cm + " cm, too close");
         }
     }
 
+    // Override the run method from MBot2.
     @Override
     public void run() {
+
+        // Repeat the movement attempt five times.
         for (int i = 0; i < 5; i++) {
+
+            // Try to move the robot forward by 40 cm.
             straight(40);
         }
     }
-
-    @Override
-    public String toString() {
-        return "CarefulBot (refused " + refused + " moves)";
-    }
 }
-
