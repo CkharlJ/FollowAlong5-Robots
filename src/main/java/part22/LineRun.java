@@ -12,5 +12,16 @@ import mbot.*;
 
 @MBotLab(world = "line-track")
 public class LineRun {
-
+    public static void main(String[] args) {
+        // Create a new Rover named Tracker.
+        Rover rover = new Rover("Tracker");
+        // Make the rover follow the line for 400 steps.
+        rover.followLine(400);
+        // Print a message saying the rover is halfway around.
+        System.out.println("Halfway round");
+        // Make the rover follow the line for another 325 steps.
+        rover.followLine(325);
+        // Print a message saying the rover finished a lap.
+        System.out.println(rover + " finished a lap");
+    }
 }
